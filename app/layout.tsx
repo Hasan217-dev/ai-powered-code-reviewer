@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, JetBrains_Mono, Merriweather } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 const merriweatherHeading = Merriweather({subsets:['latin'],variable:'--font-heading'});
 
@@ -35,6 +36,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+        <QueryProvider>
          <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -43,6 +45,7 @@ export default function RootLayout({
           >
         {children}
         </ThemeProvider>
+        </QueryProvider>
         </body>
     </html>
   );
